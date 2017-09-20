@@ -1,11 +1,10 @@
 package API;
 
 import Model.User;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/users")
+@RestController
+@RequestMapping("/user")
 public class UserAPI  extends APIController<User>{
-
 
 }
