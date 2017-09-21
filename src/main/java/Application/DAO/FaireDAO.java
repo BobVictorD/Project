@@ -1,10 +1,7 @@
-package DAO;
+package Application.DAO;
 
-import Model.Faire;
-import Model.User;
-
-import javax.persistence.TypedQuery;
-import java.util.List;
+import Application.Model.Faire;
+import Application.Model.User;
 
 /*public class FaireDAO extends DAO<Faire> {
 

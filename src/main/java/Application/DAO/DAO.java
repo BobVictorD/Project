@@ -1,6 +1,6 @@
-package DAO;
+package Application.DAO;
 
-//import utils.EntityManagerHelper;
+//import Application.utils.EntityManagerHelper;
 import javax.persistence.EntityManager;
 import java.util.List;
 

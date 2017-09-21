@@ -1,9 +1,6 @@
-package DAO;
+package Application.DAO;
 
-import Model.User;
-
-import javax.persistence.TypedQuery;
-import java.util.List;
+import Application.Model.User;
 
 /*public class UserDAO extends DAO<User> {
 

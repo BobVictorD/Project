@@ -1,9 +1,6 @@
 
-import Model.Faire;
-import Model.User;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Configuration;
+import Application.Model.Faire;
+import Application.Model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

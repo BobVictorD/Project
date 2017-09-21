@@ -1,6 +1,6 @@
-package API;
+package Application.API;
 
-/*import Service.IService;
+/*import Application.Service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

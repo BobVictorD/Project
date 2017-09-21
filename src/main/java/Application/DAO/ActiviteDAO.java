@@ -1,10 +1,7 @@
-package DAO;
+package Application.DAO;
 
-import Model.Activite;
-import Model.User;
-
-import javax.persistence.TypedQuery;
-import java.util.List;
+import Application.Model.Activite;
+import Application.Model.User;
 
 /*public class ActiviteDAO extends DAO<Activite> {
 

@@ -1,7 +1,8 @@
-package API;
+package Application.API;
 
-import Model.User;
-import Service.IUserService;
+
+import Application.Model.User;
+import Application.Service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,8 +1,6 @@
-package Service;
+package Application.Service;
 
-import Model.User;
-
-import java.util.List;
+import Application.Model.User;
 
 /*public class UserService implements IService<User> {
 

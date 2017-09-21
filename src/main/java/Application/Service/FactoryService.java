@@ -1,6 +1,6 @@
-package Service;
+package Application.Service;
 
-/*import Model.User;
+/*import Application.Model.User;
 
 public class FactoryService {
     public static IService<User> getUser(){

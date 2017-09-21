@@ -1,16 +1,16 @@
-package Service;
+package Application.Service;
 
-import Model.User;
+import Application.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-/*@Service
+/*@Application.Service
 public interface IUserService extends IService<User> {
 
 }*/
 
 
-@Service
+@Transactional
 public interface IUserService extends JpaRepository<User,Long> {
 
 }
