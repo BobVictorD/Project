@@ -1,9 +1,9 @@
 package Service;
 
-import Model.User;
+/*import Model.User;
 
 public class FactoryService {
-    /*public static IService<User> getUser(){
+    public static IService<User> getUser(){
         return new UserService();
-    }*/
-}
+    }
+}*/

@@ -1,6 +1,6 @@
 package API;
 
-import Service.IService;
+/*import Service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,4 +35,4 @@ public abstract class APIController<T> {
         return serv.save(obj);
     }
 
-}
+}*/
