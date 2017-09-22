@@ -10,7 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
 /*@Configuration
 @EnableAutoConfiguration*/
 @SpringBootApplication
-@ComponentScan(basePackages = {"Application/Model", "Application/Service", "Application/API"})
 public class SpringBootApp{
 
     public static void main(String[] args) {

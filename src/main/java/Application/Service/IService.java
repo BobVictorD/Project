@@ -1,6 +1,9 @@
 package Application.Service;
 
-/*@Application.Service
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
+
+@NoRepositoryBean
 public interface IService<T> extends JpaRepository<T,Long> {
 
-}*/
+}

@@ -1,9 +1,8 @@
 package Application.Service;
 
-import Application.Model.User;
+import Application.Model.Spot;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public interface IUserService extends IService<User> {
-
+public interface ISpotService extends IService<Spot>{
 }

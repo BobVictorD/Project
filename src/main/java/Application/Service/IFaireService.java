@@ -1,9 +1,8 @@
 package Application.Service;
 
-import Application.Model.User;
+import Application.Model.Faire;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public interface IUserService extends IService<User> {
-
+public interface IFaireService extends IService<Faire> {
 }
