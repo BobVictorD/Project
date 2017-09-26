@@ -1,9 +1,13 @@
 package Application.API;
 
 
+import Application.Model.Authentication;
 import Application.Model.User;
+import Application.Service.AuthService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import javassist.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,40 +20,42 @@ import java.util.Date;
 @RequestMapping("/auth")
 public class AuthAPI {
 
+    @Autowired
+    protected AuthService serv;
+
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestBody Login userparam) throws ServletException {
+    public String login(@RequestBody Authentication userparam) throws ServletException {
 
         String jwtToken = "";
 
-        if (userparam.login == null || userparam.password == null) {
+
+        if (!serv.validate(userparam)) {
             throw new ServletException("Please fill in username and password");
         }
 
-        String email = userparam.login;
-        String password = userparam.password;
-
-        User user = new User();
-        user.setLogin("test");
-        user.setPassword("test");
-
-        if (user == null) {
-            throw new ServletException("User email not found.");
+        try {
+            serv.connect(userparam);
+        }catch (NotFoundException ex){
+            throw new ServletException(ex.getMessage());
         }
 
-        String pwd = user.getPassword();
 
-        if (!password.equals(pwd)) {
-            throw new ServletException("Invalid login. Please check your name and password.");
-        }
-
-        jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date())
+        jwtToken = Jwts.builder().setSubject(userparam.login).claim("roles", "user").setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
 
         return jwtToken;
     }
-}
 
-class Login{
-    public String login;
-    public String password;
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public User register(@RequestBody Authentication userparam) throws ServletException {
+
+        if (!serv.validate(userparam)) {
+            throw new ServletException("Please fill in username and password");
+        }
+
+        return serv.register(userparam);
+
+
+    }
 }
