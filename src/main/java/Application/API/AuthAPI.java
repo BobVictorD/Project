@@ -54,7 +54,12 @@ public class AuthAPI {
             throw new ServletException("Please fill in username and password");
         }
 
-        return serv.register(userparam);
+        try {
+            return serv.register(userparam);
+        }catch (Exception ex){
+            throw new ServletException(ex.getMessage());
+        }
+
 
 
     }

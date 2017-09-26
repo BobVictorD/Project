@@ -8,5 +8,7 @@ import java.util.List;
 @Transactional
 public interface IUserService extends IService<User> {
 
-    public List<User> findByLoginAndPassword(String login, String password);
+    List<User> findByLoginAndPassword(String login, String password);
+
+    List<User> findByLogin(String login);
 }

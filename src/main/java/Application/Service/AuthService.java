@@ -18,7 +18,14 @@ public class AuthService {
          return authObj.login!=null && authObj.password!=null;
      }
 
-     public User register(Authentication authObj){
+     private boolean exist(String login){
+         return userServ.findByLogin(login).size()>0;
+     }
+
+     public User register(Authentication authObj) throws Exception {
+         if(exist(authObj.login)){
+             throw new Exception("Ce login est déjà utilisé, veuillez en choisir un autre");
+         }
          User user = new User();
          user.setLogin(authObj.login);
          user.setPassword(authObj.password);
