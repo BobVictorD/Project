@@ -1,9 +1,12 @@
 package Application.API;
 
 import Application.Service.IService;
+import io.jsonwebtoken.impl.DefaultClaims;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public abstract class APIController<T> {
@@ -11,28 +14,31 @@ public abstract class APIController<T> {
     @Autowired
     protected IService<T> serv;
 
+    protected String userLogin;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<T> get(){
+    public List<T> get(HttpServletRequest request){
+        this.userLogin = ((DefaultClaims) request.getAttribute("claims")).getSubject();
         return serv.findAll();
     }
 
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public T get(@PathVariable("id") long id){
+    public T get(@PathVariable("id") long id, HttpServletRequest request){
+        this.userLogin = ((DefaultClaims) request.getAttribute("claims")).getSubject();
         return serv.findOne(id);
     }
 
 
     @RequestMapping(method = RequestMethod.PUT)
-    public T create(@RequestBody T obj){
+    public T create(@RequestBody T obj, HttpServletRequest request){
+        this.userLogin = ((DefaultClaims) request.getAttribute("claims")).getSubject();
         return  serv.save(obj);
     }
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public T update(@RequestBody T obj, @PathVariable("id") int id){
+    public T update(@RequestBody T obj, @PathVariable("id") int id, HttpServletRequest request){
+        this.userLogin = ((DefaultClaims) request.getAttribute("claims")).getSubject();
         return serv.save(obj);
     }
-
 }

@@ -11,9 +11,9 @@ import java.util.List;
 @Entity
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+    /*@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)*/
+	private long id;
 	private String prenom;
 	private String nom;
 	@NotNull
@@ -25,11 +25,11 @@ public class User {
     //<editor-fold desc="get/set">
     @Id
     @GeneratedValue
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
