@@ -1,0 +1,34 @@
+insert into user (nom,prenom,login,password) values ('TEST','test','test','test');
+insert into user (nom,prenom,login,password) values ('Carter','Jimmy','jimmy','jimmy');
+insert into user (nom,prenom,login,password) values ('Reagan','Ronald','ronald','ronald');
+insert into user (nom,prenom,login,password) values ('Nixon','Richard','richard','richard');
+insert into user (nom,prenom,login,password) values ('Johnson','Lyndon','lyndon','lyndon');
+insert into user (nom,prenom,login,password) values ('Picsou','Balthazar','piscou','picsou');
+insert into user (nom,prenom,login,password) values ('Trouvetou','Géo','geo','geo');
+insert into user (nom,prenom,login,password) values ('Flagada','Jones','jones','jones');
+
+insert into faire (user) values (1);
+insert into faire (user) values (1);
+insert into faire (user) values (2);
+insert into faire (user) values (2);
+insert into faire (user) values (3);
+insert into faire (user) values (4);
+insert into faire (user) values (5);
+insert into faire (user) values (6);
+insert into faire (user) values (7);
+insert into faire (user) values (7);
+insert into faire (user) values (7);
+insert into faire (user) values (8);
+
+insert into activite (libelle,faire) values ('Roller',1);
+insert into activite (libelle,faire) values ('Escalade',2);
+insert into activite (libelle,faire) values ('Surf',3);
+insert into activite (libelle,faire) values ('Running',4);
+insert into activite (libelle,faire) values ('Sieste en plein air',5);
+insert into activite (libelle,faire) values ('VTT',6);
+insert into activite (libelle,faire) values ('Marche à pied',7);
+insert into activite (libelle,faire) values ('Randonnée',8);
+insert into activite (libelle,faire) values ('Plonger',9);
+insert into activite (libelle,faire) values ('Planche à voile',10);
+insert into activite (libelle,faire) values ('Parachute',11);
+insert into activite (libelle,faire) values ('Pêche',12);
