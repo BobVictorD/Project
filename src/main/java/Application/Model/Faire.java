@@ -9,15 +9,27 @@ import java.util.List;
  */
 @Entity
 public class Faire {
-    private int id;
-    private Activite activite;
-    private List<Spot> spots;
-    private Niveau niveau;
-    private User user;
 
-    //<editor-fold desc="get/set">
     @Id
     @GeneratedValue
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name="ACTIVITE_ID")
+    private Activite activite;
+
+    @ManyToOne
+    @JoinColumn(name="PERSONNE_ID")
+    private User user;
+
+    @OneToMany(mappedBy = "faire", cascade = CascadeType.ALL)
+    private List<Spot> spots;
+    @OneToOne(mappedBy = "faire", cascade = CascadeType.ALL)
+    private Niveau niveau;
+
+
+    //<editor-fold desc="get/set">
+
 	public int getId() {
 		return id;
 	}
@@ -26,7 +38,6 @@ public class Faire {
 		this.id = id;
 	}
 
-	@OneToOne(mappedBy = "faire", cascade = CascadeType.PERSIST)
 	public Activite getActivite() {
 		return activite;
 	}
@@ -35,7 +46,7 @@ public class Faire {
 		this.activite = activite;
 	}
 
-	@OneToMany(mappedBy = "faire", cascade = CascadeType.PERSIST)
+
 	public List<Spot> getSpots() {
 		return spots;
 	}
@@ -44,7 +55,7 @@ public class Faire {
 		spots = spots;
 	}
 
-    @OneToOne(mappedBy = "faire", cascade = CascadeType.PERSIST)
+
     public Niveau getNiveau() {
         return niveau;
     }
@@ -53,7 +64,7 @@ public class Faire {
         this.niveau = niveau;
     }
 
-    @ManyToOne
+
     public User getUser() {
         return user;
     }

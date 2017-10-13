@@ -7,28 +7,25 @@ insert into user (nom,prenom,login,password) values ('Picsou','Balthazar','pisco
 insert into user (nom,prenom,login,password) values ('Trouvetou','Géo','geo','geo');
 insert into user (nom,prenom,login,password) values ('Flagada','Jones','jones','jones');
 
-insert into faire (user) values (1);
-insert into faire (user) values (1);
-insert into faire (user) values (2);
-insert into faire (user) values (2);
-insert into faire (user) values (3);
-insert into faire (user) values (4);
-insert into faire (user) values (5);
-insert into faire (user) values (6);
-insert into faire (user) values (7);
-insert into faire (user) values (7);
-insert into faire (user) values (7);
-insert into faire (user) values (8);
+insert into activite (libelle) values ('Roller','Escalade''Surf','Running','VTT','Randonnée','Plonger','Planche à voile','Parachute','Pêche');
 
-insert into activite (libelle,faire) values ('Roller',1);
-insert into activite (libelle,faire) values ('Escalade',2);
-insert into activite (libelle,faire) values ('Surf',3);
-insert into activite (libelle,faire) values ('Running',4);
-insert into activite (libelle,faire) values ('Sieste en plein air',5);
-insert into activite (libelle,faire) values ('VTT',6);
-insert into activite (libelle,faire) values ('Marche à pied',7);
-insert into activite (libelle,faire) values ('Randonnée',8);
-insert into activite (libelle,faire) values ('Plonger',9);
-insert into activite (libelle,faire) values ('Planche à voile',10);
-insert into activite (libelle,faire) values ('Parachute',11);
-insert into activite (libelle,faire) values ('Pêche',12);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (1,1);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (1,2);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (2,1);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (2,2);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (3,3);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (4,4);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (5,3);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (6,4);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (7,5);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (7,6);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (7,7);
+insert into faire (PERSONNE_ID,ACTIVITE_ID) values (8,2);
+
+
+drop table activite cascade;
+drop table user cascade;
+drop table faire cascade;
+drop table spot cascade;
+drop table condition cascade;
+drop table niveau cascade;

@@ -1,19 +1,25 @@
 package Application.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  *Classe représentant les activitées que les utilisateurs peuvent faire.
  */
 @Entity
 public class Activite {
-    private int id;
-    private String libelle;
-    private Faire faire;
 
-    //<editor-fold desc="get/set">
     @Id
     @GeneratedValue
+    private int id;
+    private String libelle;
+    @JsonIgnore()
+    @OneToMany(mappedBy = "activite")
+    private List<Faire> faires;
+
+    //<editor-fold desc="get/set">
     public int getId() {
         return id;
     }
@@ -30,14 +36,12 @@ public class Activite {
         this.libelle = libelle;
     }
 
-    @OneToOne
-    public Faire getFaire() {
-        return faire;
+    public List<Faire> getFaires() {
+        return faires;
     }
 
-    public void setFaire(Faire faire) {
-        this.faire = faire;
+    public void setFaires(List<Faire> faires) {
+        this.faires = faires;
     }
     //</editor-fold>
-
 }

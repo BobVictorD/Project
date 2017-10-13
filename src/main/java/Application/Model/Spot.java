@@ -7,17 +7,19 @@ import javax.persistence.*;
  */
 @Entity
 public class Spot {
+	@Id
+	@GeneratedValue
 	private int id;
     private String libelle;
     private int region;
     private long Xcoord;
     private long Ycoord;
+	@OneToOne
 	private Condition condition;
+	@ManyToOne(fetch = FetchType.LAZY)
     private Faire faire;
 
     //<editor-fold desc="get/set">
-    @Id
-    @GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -58,7 +60,6 @@ public class Spot {
 		Ycoord = ycoord;
 	}
 
-	@OneToOne
 	public Condition getCondition() {
 		return condition;
 	}
@@ -67,7 +68,6 @@ public class Spot {
 		this.condition = condition;
 	}
 
-    @ManyToOne
     public Faire getFaire() {
         return faire;
     }

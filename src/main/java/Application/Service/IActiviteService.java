@@ -9,6 +9,6 @@ import java.util.List;
 @Transactional
 public interface IActiviteService extends IService<Activite> {
 
-    @Query(value = "select u from Activite u where u.faire.user.login = ?1")
-    List<Activite> findByUser(String login);
+    /*@Query(value = "select u from Activite u where u.faires.user.login = ?1")
+    List<Activite> findByUser(String login);*/
 }

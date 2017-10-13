@@ -1,16 +1,15 @@
 package Application.Model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
 *Classe représentant les condition d'un spot a un instant T
  */
 @Entity
 public class Condition {
+	@Id
+	@GeneratedValue
 	private int id;
 	private String temps;
 	//temperature en °C
@@ -19,11 +18,10 @@ public class Condition {
 	private int vent;
 	//la houle en m
 	private int houle;
+    @OneToOne(fetch = FetchType.LAZY)
     private Spot spot;
 
     //<editor-fold desc="get/set">
-    @Id
-    @GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -64,7 +62,6 @@ public class Condition {
 		this.houle = houle;
 	}
 
-	@OneToOne
     public Spot getSpot() {
         return spot;
     }

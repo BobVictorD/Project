@@ -1,25 +1,23 @@
 package Application.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  * Classe représentant le niveau d'un utilisateur (condition Min et Max) dans une activité.
  */
 @Entity
 public class Niveau {
+    @Id
+    @GeneratedValue
     private int id;
     private int vagueMax;
     private int vagueMin;
     private int ventMax;
     private int ventMin;
+    @OneToOne(fetch = FetchType.LAZY)
     private Faire faire;
 
     //<editor-fold desc="get/set">
-    @Id
-    @GeneratedValue
     public int getId() {
         return id;
     }
@@ -60,7 +58,6 @@ public class Niveau {
         this.ventMin = ventMin;
     }
 
-    @OneToOne
     public Faire getFaire() {
         return faire;
     }

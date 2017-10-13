@@ -1,6 +1,8 @@
 package Application.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -11,8 +13,8 @@ import java.util.List;
 @Entity
 public class User {
 
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)*/
+	@Id
+	@GeneratedValue
 	private long id;
 	private String prenom;
 	private String nom;
@@ -20,11 +22,11 @@ public class User {
 	private String login;
 	@NotNull
 	private String password;
-	private List<Faire> activiteFaite;
+	@JsonIgnore()
+    @OneToMany(mappedBy = "user")
+	private List<Faire> faires;
 
     //<editor-fold desc="get/set">
-    @Id
-    @GeneratedValue
 	public long getId() {
 		return id;
 	}
@@ -65,13 +67,12 @@ public class User {
 		this.password = password;
 	}
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
-    public List<Faire> getActiviteFaite() {
-		return activiteFaite;
+    public List<Faire> getFaires() {
+		return faires;
 	}
 
-	public void setActiviteFaite(List<Faire> activiteFaite) {
-        this.activiteFaite = activiteFaite;
+	public void setFaires(List<Faire> faires) {
+        this.faires = faires;
 	}
 
     //</editor-fold>
