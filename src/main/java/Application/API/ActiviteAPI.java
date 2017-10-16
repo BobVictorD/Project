@@ -20,7 +20,6 @@ public class ActiviteAPI extends APIController<Activite> {
     @RequestMapping("/user")
     public List<Activite> getByUser(HttpServletRequest request){
         String userLogin = ((DefaultClaims) request.getAttribute("claims")).getSubject();
-        /*return getService().findByUser(userLogin);*/
-        return getService().findAll();
+        return getService().findByUser(userLogin);
     }
 }
