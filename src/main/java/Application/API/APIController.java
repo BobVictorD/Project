@@ -27,14 +27,14 @@ public abstract class APIController<T> {
     }
 
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.POST)
     public T create(@RequestBody T obj, HttpServletRequest request){
-        return  serv.save(obj);
+        return  serv.saveAndFlush(obj);
     }
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public T update(@RequestBody T obj, @PathVariable("id") int id, HttpServletRequest request){
-        return serv.save(obj);
+        return serv.saveAndFlush(obj);
     }
 }

@@ -1,5 +1,7 @@
 package Application.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -10,11 +12,15 @@ public class Niveau {
     @Id
     @GeneratedValue
     private int id;
+    private int tempMax;
+    private int tempsMin;
+    private int precipitation;
     private int vagueMax;
     private int vagueMin;
     private int ventMax;
     private int ventMin;
-    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore()
+    @OneToOne
     private Faire faire;
 
     //<editor-fold desc="get/set">
@@ -65,5 +71,30 @@ public class Niveau {
     public void setFaire(Faire faire) {
         this.faire = faire;
     }
+
+    public int getTempMax() {
+        return tempMax;
+    }
+
+    public void setTempMax(int tempMax) {
+        this.tempMax = tempMax;
+    }
+
+    public int getTempsMin() {
+        return tempsMin;
+    }
+
+    public void setTempsMin(int tempsMin) {
+        this.tempsMin = tempsMin;
+    }
+
+    public int getPrecipitation() {
+        return precipitation;
+    }
+
+    public void setPrecipitation(int precipitation) {
+        this.precipitation = precipitation;
+    }
+
     //</editor-fold>
 }

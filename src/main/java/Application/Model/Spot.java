@@ -1,6 +1,9 @@
 package Application.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Classe représentant les Spot ou l'utilisateur peut faire des activités.
@@ -14,10 +17,10 @@ public class Spot {
     private int region;
     private long Xcoord;
     private long Ycoord;
-	@OneToOne
-	private Condition condition;
-	@ManyToOne(fetch = FetchType.LAZY)
-    private Faire faire;
+
+	@JsonIgnore()
+	@ManyToMany(mappedBy = "spots")
+    private List<Faire> faires;
 
     //<editor-fold desc="get/set">
 	public int getId() {
@@ -60,20 +63,12 @@ public class Spot {
 		Ycoord = ycoord;
 	}
 
-	public Condition getCondition() {
-		return condition;
-	}
-
-	public void setCondition(Condition condition) {
-		this.condition = condition;
-	}
-
-    public Faire getFaire() {
-        return faire;
+    public List<Faire> getFaires() {
+        return faires;
     }
 
-    public void setFaire(Faire faire) {
-        this.faire = faire;
+    public void setFaires(List<Faire> faires) {
+        this.faires = faires;
     }
 	//</editor-fold>
 

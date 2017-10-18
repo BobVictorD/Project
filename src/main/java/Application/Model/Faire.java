@@ -1,5 +1,7 @@
 package Application.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,9 +24,13 @@ public class Faire {
     @JoinColumn(name="PERSONNE_ID")
     private User user;
 
-    @OneToMany(mappedBy = "faire", cascade = CascadeType.ALL)
+
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name = "FAIRE_SPOT", joinColumns = @JoinColumn(name = "FAIRE_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "SPOT_ID", referencedColumnName = "ID"))
     private List<Spot> spots;
-    @OneToOne(mappedBy = "faire", cascade = CascadeType.ALL)
+
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="NIVEAU_ID")
     private Niveau niveau;
 
 
