@@ -12,22 +12,22 @@ import java.util.List;
 public class Spot {
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
     private String libelle;
     private int region;
-    private long Xcoord;
-    private long Ycoord;
+    private long xcoord;
+    private long ycoord;
 
 	@JsonIgnore()
 	@ManyToMany(mappedBy = "spots")
     private List<Faire> faires;
 
     //<editor-fold desc="get/set">
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -47,20 +47,20 @@ public class Spot {
         this.region = region;
     }
 
-	public long getXcoord() {
-		return Xcoord;
+	public long getxcoord() {
+		return xcoord;
 	}
 
-	public void setXcoord(long xcoord) {
-		Xcoord = xcoord;
+	public void setxcoord(long xcoord) {
+		xcoord = xcoord;
 	}
 
-	public long getYcoord() {
-		return Ycoord;
+	public long getycoord() {
+		return ycoord;
 	}
 
-	public void setYcoord(long ycoord) {
-		Ycoord = ycoord;
+	public void setycoord(long ycoord) {
+		ycoord = ycoord;
 	}
 
     public List<Faire> getFaires() {
@@ -73,4 +73,8 @@ public class Spot {
 	//</editor-fold>
 
 
+	@Override
+	public String toString() {
+		return id + "";
+	}
 }

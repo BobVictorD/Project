@@ -16,6 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/faire")
 public class FaireAPI extends APIController<Faire>{
 
+    /*@RequestMapping(value="/test", method = RequestMethod.POST)
+    public Faire create(@RequestBody String obj, HttpServletRequest request){
+        String userLogin = ((DefaultClaims) request.getAttribute("claims")).getSubject();
+        obj.setUser(serv.getAuthUser(userLogin));
+        return  serv.saveAndFlush(obj);
+        return new Faire();
+    }*/
+
     @RequestMapping(method = RequestMethod.POST)
     public Faire create(@RequestBody Faire obj, HttpServletRequest request){
         String userLogin = ((DefaultClaims) request.getAttribute("claims")).getSubject();

@@ -1,7 +1,9 @@
 package Application.API;
 
 import Application.Service.IService;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import io.jsonwebtoken.impl.DefaultClaims;
+import javafx.beans.binding.BooleanExpression;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,5 +38,10 @@ public abstract class APIController<T> {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public T update(@RequestBody T obj, @PathVariable("id") int id, HttpServletRequest request){
         return serv.saveAndFlush(obj);
+    }
+
+    @RequestMapping(value= "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable("id") String id){
+        serv.delete(Long.decode(id));
     }
 }

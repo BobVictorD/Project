@@ -21,7 +21,7 @@ public class SpringBootApp extends WebSecurityConfigurerAdapter{
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("*");
+                registry.addMapping("/**").allowedMethods("PUT","POST","GET","DELETE").allowedOrigins("*");
             }
         };
     }
