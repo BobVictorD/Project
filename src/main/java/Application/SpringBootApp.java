@@ -3,9 +3,11 @@ package Application;
 import Application.API.UserAPI;
 import Application.Model.User;
 import Application.Security.JwtFilter;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -16,7 +18,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import javax.servlet.http.HttpServletRequestWrapper;
 
+@EnableBatchProcessing
 @SpringBootApplication
+@EnableScheduling // Enables scheduling
 public class SpringBootApp extends WebSecurityConfigurerAdapter{
 
 
@@ -46,6 +50,11 @@ public class SpringBootApp extends WebSecurityConfigurerAdapter{
 
 
     public static void main(String[] args) {
+
         SpringApplication.run(SpringBootApp.class, args);
+        //Mise à jour de la météo planifiée
+        //lecture enregistrements Planification, lancer un update des météos.
+        
+
     }
 }
