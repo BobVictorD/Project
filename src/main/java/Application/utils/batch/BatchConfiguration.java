@@ -69,4 +69,3 @@ public class BatchConfiguration {
         return new ResourcelessTransactionManager();
     }
 }
-

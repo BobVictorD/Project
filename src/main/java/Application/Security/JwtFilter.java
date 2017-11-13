@@ -29,6 +29,18 @@ public class JwtFilter extends GenericFilterBean {
         final HttpServletResponse response = (HttpServletResponse) res;
         final String authHeader = request.getHeader("authorization");
 
+        //Code rajouté a la derniére minute
+        //lors des derniers test de verification (par acquis de conscience) la methode
+        //censé faire le travail (voir SpringBootApp) ne le fait pu
+        //aprés recherche je ne trouve pas de solutions et fini donc par mettre en place
+        //ce code pas trés propre.
+        if(((HttpServletRequest) req).getServletPath().matches("/auth/login")){
+            chain.doFilter(req, res);
+        }
+        if(((HttpServletRequest) req).getServletPath().matches("/auth/register")){
+            chain.doFilter(req, res);
+        }
+
         if ("OPTIONS".equals(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
 

@@ -17,13 +17,12 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import javax.servlet.http.HttpServletRequestWrapper;
-
 @EnableBatchProcessing
 @SpringBootApplication
 @EnableScheduling // Enables scheduling
 public class SpringBootApp extends WebSecurityConfigurerAdapter{
 
+    @Autowired JwtFilter jwtFilter;
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
@@ -35,21 +34,20 @@ public class SpringBootApp extends WebSecurityConfigurerAdapter{
         };
     }
 
-
+    ///
+    ///Méthode censé dire au programme d'ignoré les route spécifier pour l'urilisation du filtre
+    /// a marché jusqu'au derniers test avant livraison...
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web
-            .ignoring()
-            .antMatchers("/auth/login","/auth/register");
+        web.ignoring().antMatchers("/auth/login","/auth/register");
     }
-
-    @Autowired JwtFilter jwtFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
+
 
 
     public static void main(String[] args) {
