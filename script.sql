@@ -1,11 +1,3 @@
-drop table activite cascade;
-drop table user cascade;
-drop table faire cascade;
-drop table spot cascade;
-drop table condition cascade;
-drop table niveau cascade;
-drop table faire_spot cascade;
-
 insert into user (nom,prenom,login,password) values ('TEST','test','test','test');
 insert into user (nom,prenom,login,password) values ('Carter','Jimmy','jimmy','jimmy');
 insert into user (nom,prenom,login,password) values ('Reagan','Ronald','ronald','ronald');
