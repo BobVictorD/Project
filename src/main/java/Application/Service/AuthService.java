@@ -18,7 +18,7 @@ public class AuthService {
          return authObj.login!=null && authObj.password!=null;
      }
 
-     private boolean exist(String login){
+     public boolean exist(String login){
          return userServ.findByLogin(login).size()>0;
      }
 

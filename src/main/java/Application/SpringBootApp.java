@@ -4,6 +4,7 @@ import Application.API.UserAPI;
 import Application.Model.User;
 import Application.Security.JwtFilter;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -42,10 +43,12 @@ public class SpringBootApp extends WebSecurityConfigurerAdapter{
             .antMatchers("/auth/login","/auth/register");
     }
 
+    @Autowired JwtFilter jwtFilter;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
 
